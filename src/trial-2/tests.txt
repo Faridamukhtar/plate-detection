@@ -1,0 +1,43 @@
+image 1 -> b	works               ---> works
+image 2 -> b 	works               ---> works
+image 3 -> b	works               ---> works
+image 4 -> b	works               ---> works
+image 5 ->
+image 6 -> d 	works at min_ratio , max_ratio = 0.25 , 1.2 rather than max_ratio=1
+image 7 -> d	works               ---> works
+image 8 -> d	works               ---> works
+image 9 -> d	works               ---> works
+
+image 10 -> d	works partially     ---> fails (el plate aslan byetshal ma3 el mask)
+image 11 -> b    works              ---> works
+image 12 ->	vd	works       ---> works
+image 13 ->	d	fails keep it ---> fails (el caharcters msh wad7a awi fa msh betkammel fl segmentation of contours)
+image 14 -> d	works               ---> works
+image 15 -> 	fails               ---> fails (el plate contours were filtered out because they weren't close enough)
+image 16 -> b	works
+
+
+image 20 -> d	works               ---> works bas nos el plate mettakel
+image 21 -> vd	works bare minimum  ---> works 
+image 22 -> b	works               ---> works
+image 23 -> b	works               ---> works
+image 24 -> d	works               ---> works
+image 25 -> b	works               ---> fails (half the plate is removed in masking)
+image 26 ->
+image 27 -> d	works               ---> works bas el mask ma3amalsh haga
+image 28 -> d	works               ---> works
+image 29 -> b	works               ---> works
+  
+
+image 30 -> b	works perfectly     ---> works
+image 31 -> d	works               ---> works
+image 32 -> d	fails keep it       ---> fails(byetshalo fl filtering of contours)
+image 33 -> b	fails perfectly (describes the disadvantage of our algorithm)                          ---> fails(byetshalo fl filtering of contours)
+image 34 -> b	works partially     ---> fails (el arqam aslan msh wad7a awi)
+image 35 -> d	bare minimum        ---> works
+image 36 -> vd
+image 37 -> 		fails       ---> fails
+image 38 -> b	works partially     ---> works partially
+image 39 -> b	partially working   ---> works 80%
+image 40 -> d 	works               ---> works 
+
