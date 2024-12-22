@@ -15,8 +15,11 @@ const App = () => {
     const [image, setImage] = useState(null);
     const [plate, setPlate] = useState("");
     const [fees, setFees] = useState("");
+    const [plateOCR, setPlateOCR] = useState("");
+    const [feesOCR, setFeesOCR] = useState("");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
+    let api = 'http://127.0.0.1:5000';
 
     const handleImageUpload = (e) => {
         setImage(e.target.files[0]);
@@ -33,18 +36,21 @@ const App = () => {
         formData.append("image", image);
 
         try {
-            const response = await fetch("http://127.0.0.1:5001/extract_plate", {
+            const response = await fetch(`${api}/extract_plate`, {
                 method: "POST",
                 body: formData,
             });
 
             if (!response.ok) {
-                throw new Error("Failed to extract plate.");
+                throw new Error(`${api}/Failed to extract plate.`);
             }
-
             const data = await response.json();
+            console.log(data)
+
             setPlate(data.plate);
             setFees(data.fees);
+            setPlateOCR(data.plateOCR);
+            setFeesOCR(data.feesOCR);
         } catch (error) {
             console.error("Error extracting plate:", error);
         } finally {
@@ -56,7 +62,7 @@ const App = () => {
         setLoading(true);
 
         try {
-            const response = await fetch("http://127.0.0.1:5001/train_model", {
+            const response = await fetch("http://127.0.0.1:5000/train_model", {
                 method: "POST",
             });
 
@@ -111,13 +117,26 @@ const App = () => {
                     <Card>
                         <CardContent>
                             <Typography variant="h6" gutterBottom>
-                                Results
+                                Results (Classifier)
                             </Typography>
                             <Typography variant="body1">
                                 <strong>Plate:</strong> {plate || "No plate extracted yet."}
                             </Typography>
                             <Typography variant="body1">
                                 <strong>Fees:</strong> {fees ? `$${fees}` : "No fees calculated yet."}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardContent>
+                            <Typography variant="h6" gutterBottom>
+                                Results (OCR Deep Learning Model)
+                            </Typography>
+                            <Typography variant="body1">
+                                <strong>Plate:</strong> {plateOCR || "No plate extracted yet."}
+                            </Typography>
+                            <Typography variant="body1">
+                                <strong>Fees:</strong> {feesOCR ? `$${feesOCR}` : "No fees calculated yet."}
                             </Typography>
                         </CardContent>
                     </Card>
