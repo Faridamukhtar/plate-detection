@@ -33,7 +33,7 @@ const App = () => {
         formData.append("image", image);
 
         try {
-            const response = await fetch("http://127.0.0.1:5000/extract_plate", {
+            const response = await fetch("http://127.0.0.1:5001/extract_plate", {
                 method: "POST",
                 body: formData,
             });
@@ -56,7 +56,7 @@ const App = () => {
         setLoading(true);
 
         try {
-            const response = await fetch("http://127.0.0.1:5000/train_model", {
+            const response = await fetch("http://127.0.0.1:5001/train_model", {
                 method: "POST",
             });
 
