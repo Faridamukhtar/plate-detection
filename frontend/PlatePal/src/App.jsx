@@ -19,7 +19,7 @@ const App = () => {
     const [feesOCR, setFeesOCR] = useState("");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
-    let api = 'http://127.0.0.1:5001';
+    let api = 'http://127.0.0.1:5000';
 
     const handleImageUpload = (e) => {
         setImage(e.target.files[0]);
