@@ -19,7 +19,7 @@ const App = () => {
     const [feesOCR, setFeesOCR] = useState("");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
-    let api = 'http://127.0.0.1:5000';
+    let api = 'http://127.0.0.1:5001';
 
     const handleImageUpload = (e) => {
         setImage(e.target.files[0]);
@@ -62,7 +62,7 @@ const App = () => {
         setLoading(true);
 
         try {
-            const response = await fetch("http://127.0.0.1:5000/train_model", {
+            const response = await fetch(`${api}/train_model`, {
                 method: "POST",
             });
 
