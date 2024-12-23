@@ -1,26 +1,43 @@
+# General Utilities
+import numpy as np
+import os
+import random
+import argparse
+import math
+import time
+from typing import List
 
+# Machine Learning
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neural_network import MLPClassifier  # MLP is an NN
+from sklearn import svm
+from sklearn.model_selection import train_test_split
 
+# Image Processing and Visualization
+import skimage
 import skimage.io as io
 import matplotlib.pyplot as plt
-import numpy as np
-from skimage.exposure import histogram
-from matplotlib.pyplot import bar
-from skimage.color import rgb2gray,rgb2hsv
+from skimage import filters, feature
+from skimage.color import rgb2gray
+from skimage.morphology import (
+    binary_erosion, binary_dilation, binary_closing, skeletonize, thin
+)
+from skimage.measure import find_contours
+from skimage.draw import rectangle
+from scipy.ndimage import median_filter
+from scipy.signal import find_peaks, peak_widths
 
-# Convolution:
-from scipy.signal import convolve2d
+# OpenCV
+import cv2 as cv
+
+# Signal Processing and Convolution
+from scipy.signal import convolve2d, find_peaks, peak_widths
 from scipy import fftpack
-import math
 
-from skimage.util import random_noise
-from skimage.filters import median
-from skimage.filters import gaussian
-from skimage.feature import canny
-
-
-
-# Edges
-from skimage.filters import sobel_h, sobel, sobel_v,roberts, prewitt
+# TensorFlow/Keras for Deep Learning
+from tensorflow.keras.models import load_model, Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
+from tensorflow.keras.utils import to_categorical
 
 # Show the figures / plots inside the notebook
 def show_images(images,titles=None):
